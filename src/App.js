@@ -1,18 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ListaDeNotas from './components/listaDeNotas';
+import FormularioCadastro from './components/formularioCadastro';
 
-function App() {
-  return (
-    //a funcao no arquivo jsx só pode retornar um elemento html pai
-    <section>
-      <form>
-        <input type="text" placeholder="Titulo"/>
-        <textarea placeholder="escreva sua nota.."></textarea>
-        <input type="button" value="criar nota"/>
-        </form>
-      <ListaDeNotas/>
-    </section>
-  );
+class App extends Component{
+  render(){
+    return (
+      //a funcao no arquivo jsx só pode retornar um elemento html pai
+      <section>
+        <FormularioCadastro/>
+        <ListaDeNotas/>
+      </section>
+    );
+  }
 }
 
 export default App;
