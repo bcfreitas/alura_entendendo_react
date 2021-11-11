@@ -9,7 +9,7 @@ class FormularioCadastro extends Component {
 
   handleMudancaDeTitulo(evento){
     console.log(evento.target.value);
-    this.titulo="";
+    this.titulo=evento.target.value;
   }
 
   render() {
@@ -19,7 +19,10 @@ class FormularioCadastro extends Component {
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
-          onChange={this.handleMudancaDeTitulo}
+          //quando atribuímos o método no onChange, o this interno do método
+          //não funciona porque está fora do contexto do objeto. 
+          //por isso é preciso usar o bind para atribuir o objeto presente ao contexto
+          onChange={this.handleMudancaDeTitulo.bind(this)}
         />
         <textarea
           rows={15}
