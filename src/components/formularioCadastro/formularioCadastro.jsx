@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import "./estilo.css";
 class FormularioCadastro extends Component {
+
+  constructor(){
+    super();
+    this.titulo = "";
+  }
+
+  handleMudancaDeTitulo(evento){
+    console.log(evento.target.value);
+    this.titulo="";
+  }
+
   render() {
     return (
       <form className="form-cadastro ">
@@ -8,6 +19,7 @@ class FormularioCadastro extends Component {
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
+          onChange={this.handleMudancaDeTitulo}
         />
         <textarea
           rows={15}
