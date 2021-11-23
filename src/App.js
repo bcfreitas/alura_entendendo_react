@@ -15,8 +15,9 @@ class App extends Component {
     };
   }
 
-  criarNota(titulo, texto){
-    const novaNota = {titulo, texto};
+  criarNota(titulo, texto, categoria){
+    console.log(categoria);
+    const novaNota = {titulo, texto, categoria};
     console.log('nota criada: ' + titulo + ", " + texto);
     //nao adiantaria chamar explicitamente
     //o metodo Render, pois é para uso do React

@@ -5,6 +5,8 @@ class FormularioCadastro extends Component {
   constructor(props){
     super(props);
     this.titulo = "";
+    this.text = "";
+    this.categoria = "sem categoria";
   }
 
   //começar metodo com underline o torna privado
@@ -19,11 +21,16 @@ class FormularioCadastro extends Component {
     this.jurubitao=evento.target.value+'IIIII';
   }
 
+  _handleMudancaCategoria(evento){
+    evento.stopPropagation();
+    this.categoria = evento.target.value;
+  }
+  
   _criarNota(evento){
     evento.preventDefault();
     evento.stopPropagation();
     console.log('nova nota cadastrada: ' + this.titulo + '. ' + this.texto + ',' + this.jurubitao);
-    this.props.criarNota(this.titulo, this.texto);
+    this.props.criarNota(this.titulo, this.texto, this.categoria);
 
   }
 
@@ -32,9 +39,12 @@ class FormularioCadastro extends Component {
       <form className="form-cadastro"
         onSubmit={this._criarNota.bind(this)}>
        
-        <select className="form-cadastro_input">
-          {this.props.categorias.map((categoria) =>{
-            return <option>{categoria}</option>
+        <select
+          onChange={this._handleMudancaCategoria.bind(this)}
+          className="form-cadastro_input">
+        <option key={0}>sem categoria</option>
+          {this.props.categorias.map((categoria, index) =>{
+            return <option key={index+1}>{categoria}</option>
           }
           )}
         </select>

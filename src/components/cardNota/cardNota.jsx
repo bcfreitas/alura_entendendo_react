@@ -11,6 +11,7 @@ class CardNota extends Component {
   }
 
   render() {
+    console.log(this.props.categoria);
     return (
       <section className="card-nota">
         <header className="card-nota_cabecalho">
@@ -18,6 +19,7 @@ class CardNota extends Component {
           <img src={deleteSVG} alt="delete" style={{display:'none'}}/>
           {/*quando importamos como ReactComponent, podemos usar da forma abaixo*/}
           <DeleteSVG2 onClick={this.apagar.bind(this)}/>
+          <h4>{this.props.categoria}</h4>
         </header>
         <p className="card-nota_texto">{this.props.texto}</p>
       </section>
