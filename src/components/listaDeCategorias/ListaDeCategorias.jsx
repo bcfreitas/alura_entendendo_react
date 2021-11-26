@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import "./estilo.css";
 
 class ListaDeCategorias extends Component {
+
+    constructor(){
+        super();
+        this.state = {categorias:[]};
+    }
+
+    //este método é chamado pelo ciclo de vida objeto no React após a renderização completa
+    componentDidMount(){
+        this.props.categorias.inscrever(this._novasCategorias.bind(this));
+    }
+
+    _novasCategorias(categorias){
+        console.log(categorias);
+        this.setState({...this.state, categorias})
+    }
+
     _handleEventoInput(e){
         console.log(e);
         if(e.key === "Enter"){
@@ -16,7 +32,7 @@ class ListaDeCategorias extends Component {
         /*todo componente precisa retornar um único elemento pai, com subelementos se quiser */
         <section className="lista-categorias">
             <ul className="lista-categorias_lista">
-                {this.props.categorias.map((categoria, index) => {
+                {this.state.categorias.map((categoria, index) => {
                     return  <li key={index} className="lista-categorias_item">{categoria}</li>       
                 })}
                 

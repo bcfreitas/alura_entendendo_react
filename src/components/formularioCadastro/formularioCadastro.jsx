@@ -7,6 +7,15 @@ class FormularioCadastro extends Component {
     this.titulo = "";
     this.text = "";
     this.categoria = "sem categoria";
+    this.state = {categorias:[]};
+  }
+
+  componentDidMount(){
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(categorias){
+    this.setState({...this.state, categorias});
   }
 
   //começar metodo com underline o torna privado
@@ -43,7 +52,7 @@ class FormularioCadastro extends Component {
           onChange={this._handleMudancaCategoria.bind(this)}
           className="form-cadastro_input">
         <option key={0}>sem categoria</option>
-          {this.props.categorias.map((categoria, index) =>{
+          {this.state.categorias.map((categoria, index) =>{
             return <option key={index+1}>{categoria}</option>
           }
           )}
