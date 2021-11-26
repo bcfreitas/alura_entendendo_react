@@ -6,11 +6,15 @@ class ListaDeCategorias extends Component {
     constructor(){
         super();
         this.state = {categorias:[]};
-    }
+        this._novasCategorias = this._novasCategorias.bind(this);    }
 
     //este método é chamado pelo ciclo de vida objeto no React após a renderização completa
     componentDidMount(){
         this.props.categorias.inscrever(this._novasCategorias.bind(this));
+    }
+
+    componentWillUnmount(){
+        this.props.cageorias.desinscrever(this._novasCategorias);
     }
 
     _novasCategorias(categorias){
